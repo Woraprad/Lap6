@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Lap6
 {
@@ -10,14 +7,13 @@ namespace Lap6
     {
         static void Main(string[] args)
         {
-            Student su = new Student("Student Name", "12345678");
+            TraineeStudent su = new TraineeStudent();
             try
             {
-                 su.Name = "My name";
-                su.GPA = 3.5f;
-                Console.WriteLine("Student name : " + su.Name);
-                Console.WriteLine("Student ID   : " + su.ID);
-                Console.WriteLine("Student GPA  : " + su.GPA);
+                su.StudentID = "Student Name";
+                su.Salary = 350f;
+                Console.WriteLine("Student name : " + su.StudentID);
+                Console.WriteLine("Student GPA  : " + su.Salary);
             }
             catch (Exception e)
             {
@@ -26,39 +22,29 @@ namespace Lap6
             Console.ReadLine();
         }
     }
-    class Student
+    class TraineeStudent
     {
-        private string name;
-        private string id;
-        private float gpa;
-
-        public Student(string Name, string ID)
+        private string studentID;
+        private float salary;
+        public string StudentID
         {
-            this.name = Name;   // assign auto variable to the field
-            this.id = ID;
+            get { return studentID; }
+            set { studentID = value; }
         }
-
-        public string Name
-        {
-            get { return name; }
-        }
-        public string ID
-        {
-            get { return id; }
-        }
-        public float GPA
+        public float Salary
         {
             get
             {
-                return gpa;
+                return salary;
             }
             set
             {
-                if (value > 0.0 && value <= 4.0)
-                    gpa = value;
+                if (value > 300 && value <= 450)
+                    salary = value;
                 else
-                    throw (new Exception("Error!!!! invalid GPA"));
+                    throw (new Exception("Error!!!! invalid Salary"));
             }
         }
     }
+
 }
