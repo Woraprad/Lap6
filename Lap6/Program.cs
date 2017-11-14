@@ -7,44 +7,37 @@ namespace Lap6
     {
         static void Main(string[] args)
         {
-            TraineeStudent su = new TraineeStudent();
-            try
-            {
-                su.StudentID = "Student Name";
-                su.Salary = 350f;
-                Console.WriteLine("Student name : " + su.StudentID);
-                Console.WriteLine("Student GPA  : " + su.Salary);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            Teacher teacher = new Teacher("Tom", 350f);
+            // teacher work for 20Hr/month
+            Console.WriteLine("{0} charge = {1}", teacher.TypeName(),
+                teacher.CalculateCharge(20f));
             Console.ReadLine();
         }
-    }
-    class TraineeStudent
-    {
-        private string studentID;
-        private float salary;
-        public string StudentID
-        {
-            get { return studentID; }
-            set { studentID = value; }
-        }
-        public float Salary
-        {
-            get
-            {
-                return salary;
-            }
-            set
-            {
-                if (value > 300 && value <= 450)
-                    salary = value;
-                else
-                    throw (new Exception("Error!!!! invalid Salary"));
-            }
-        }
-    }
 
+
+        class Teacher
+        {
+            // constructor (for initial private/protected variables)
+            public Teacher(string name, float billingRate)
+            {
+                this.name = name;
+                this.billingRate = billingRate;
+            }
+            // figure out the charge based on teacher's rate
+            public float CalculateCharge(float hours)
+            {
+                return (hours * billingRate);
+            }
+            // return the name of this type
+            public string TypeName()
+            {
+                return ("Teacher");
+            }
+            private string name;
+            protected float billingRate;
+        }
+
+    }
 }
+
+
