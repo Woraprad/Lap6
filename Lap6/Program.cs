@@ -7,10 +7,11 @@ namespace Lap6
     {
         static void Main(string[] args)
         {
-            Person p = new Professor();
+            Student p = new Professor();
             p.SayHi();
             Console.ReadKey();
         }
+
 
 
     }
